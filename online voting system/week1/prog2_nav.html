@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+        body { 
+            margin: 0; padding: 0; 
+            background: #1e1e2f; 
+            color: #ccc; font-family: 'Outfit', sans-serif;
+            height: 100vh;  box-sizing: border-box;
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+        .menu-title { padding: 25px 20px 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #777; font-weight: 600; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        li { margin-bottom: 5px; }
+        a { 
+            text-decoration: none; color: #ccc; font-weight: 600; font-size: 16px;
+            display: flex; align-items: center; padding: 15px 20px; 
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        a:hover { background: rgba(0, 242, 254, 0.1); color: #fff; border-left-color: #00f2fe; }
+        .icon { width: 24px; height: 24px; margin-right: 15px; background: rgba(255,255,255,0.1); border-radius: 5px; display: inline-block;}
+        .countdown { padding: 20px; margin: 20px; background: rgba(0,0,0,0.3); border-radius: 10px; text-align: center; border: 1px solid rgba(0,242,254,0.3); }
+        .countdown h4 { margin: 0 0 10px; color: #00f2fe; font-size: 14px; text-transform: uppercase;}
+        .timer { font-size: 24px; font-weight: bold; color: #fff; text-shadow: 0 0 10px #00f2fe; }
+    </style>
+</head>
+<body>
+    <div class="menu-title">Main Navigation</div>
+    <ul>
+        <li><a href="prog2_content.html" target="content"><span class="icon"></span> Overview</a></li>
+        <li><a href="prog2_login.html" target="content"><span class="icon"></span> Portal Login</a></li>
+        <li><a href="prog2_register.html" target="content"><span class="icon"></span> Auth Register</a></li>
+        <li><a href="prog2_catalogue.html" target="content"><span class="icon"></span> Live Ballot</a></li>
+    </ul>
+
+    <div class="countdown">
+        <h4>Voting Closes In</h4>
+        <div class="timer">14:02:59</div>
+    </div>
+</body>
+</html>

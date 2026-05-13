@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voter Record - CSS Animation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8; /* Soft blue-gray background for voting theme */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            width: 450px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+            /* slideIn animation as requested in the screenshot */
+            animation: slideIn 1.5s ease-out;
+            border-top: 5px solid #1976D2; /* Voting blue accent */
+        }
+
+        h2 {
+            text-align: center;
+            color: darkblue;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 26px;
+            /* glowText animation as requested in the screenshot */
+            animation: glowText 2s infinite alternate;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .label {
+            font-weight: bold;
+            background: #e3f2fd; /* Light blue matching theme */
+            width: 40%;
+            color: #1565c0;
+        }
+
+        /* Keyframe Animations */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-60px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes glowText {
+            from {
+                color: darkblue;
+                text-shadow: 0 0 5px skyblue;
+            }
+            to {
+                color: #D32F2F; /* Substituted red for voting theme contrast */
+                text-shadow: 0 0 10px orange;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Voter Profile Record</h2>
+        <table>
+            <tr>
+                <td class="label">Voter Name</td>
+                <td>Priya Patel</td>
+            </tr>
+            <tr>
+                <td class="label">Voter ID</td>
+                <td>VOT-IND-4590</td>
+            </tr>
+            <tr>
+                <td class="label">Constituency</td>
+                <td>South District</td>
+            </tr>
+            <tr>
+                <td class="label">Age</td>
+                <td>32</td>
+            </tr>
+            <tr>
+                <td class="label">Email</td>
+                <td>priya.p@example.com</td>
+            </tr>
+            <tr>
+                <td class="label">Phone</td>
+                <td>+91 9876543210</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

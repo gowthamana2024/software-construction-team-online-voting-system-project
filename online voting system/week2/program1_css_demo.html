@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voting System - CSS Types Demo</title>
+    <link rel="stylesheet" href="program1_style.css">
+    <style>
+        /* Internal CSS */
+        .internal-style {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-left: 5px solid #2196F3;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        h2.internal-heading {
+            color: #1976D2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- External CSS is applied to body, h1, and container classes -->
+        <h1>Online Voting System - CSS Demonstration</h1>
+        
+        <p>This page demonstrates the three different ways to apply CSS styles within the Voting System portal.</p>
+
+        <!-- Internal CSS Demonstration -->
+        <div class="internal-style">
+            <h2 class="internal-heading">Internal CSS Example</h2>
+            <p>This section is styled using an internal stylesheet defined in the <code>&lt;style&gt;</code> tag within the <code>&lt;head&gt;</code> of the document. We use this for page-specific overrides.</p>
+        </div>
+
+        <!-- Inline CSS Demonstration -->
+        <div style="background-color: #fff3e0; padding: 20px; border-left: 5px solid #ff9800; margin: 20px 0; border-radius: 4px;">
+            <h2 style="color: #e65100; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 0;">Inline CSS Example</h2>
+            <p style="font-size: 16px; color: #333;">This section is styled using inline styles directly on the HTML tags via the <code>style</code> attribute. This is generally avoided but useful for dynamic styling via JavaScript.</p>
+            <button style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background-color 0.3s;">Verify Voter Identity</button>
+        </div>
+        
+        <!-- External CSS Demonstration -->
+        <div class="external-style">
+            <h2 class="external-heading">External CSS Example</h2>
+            <p>This section is styled using an external stylesheet (<code>program1_style.css</code>) linked in the head section. This is the standard, scalable approach for our entire Online Voting System.</p>
+            <button class="btn-primary">Register New Voter</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Programme 1: Voter Records</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            margin: 0; 
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            padding: 40px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        .header-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 20px; margin-bottom: 30px; }
+        h1 { margin: 0; font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .badge { background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); padding: 8px 15px; border-radius: 20px; font-weight: 600; font-size: 14px; color: #fff;}
+        .card-grid { display: flex; gap: 30px; margin-bottom: 30px; }
+        .card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; flex: 1; transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,242,254,0.2); border-color: #00f2fe; }
+        .card h2 { color: #00f2fe; margin-top: 0; font-size: 22px; }
+        ul, ol { padding-left: 20px; line-height: 1.8; }
+        li strong { color: #00f2fe; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; background: rgba(0,0,0,0.4); border-radius: 10px; overflow: hidden; }
+        th, td { padding: 15px; text-align: left; }
+        th { background-color: rgba(0, 242, 254, 0.2); color: #00f2fe; font-weight: 600; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;}
+        td { border-bottom: 1px solid rgba(255,255,255,0.1); color: #ddd; }
+        tr:hover td { background-color: rgba(255,255,255,0.05); color: #fff;}
+        .status { padding: 5px 10px; border-radius: 5px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+        .status.voted { background-color: rgba(46, 204, 113, 0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+        .status.pending { background-color: rgba(241, 196, 15, 0.2); color: #f1c40f; border: 1px solid #f1c40f; }
+        .search-bar { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; margin-bottom: 20px; box-sizing: border-box; font-family: 'Outfit'; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-top">
+            <h1>Programme 1: Voter Dashboard</h1>
+            <span class="badge">Live Network: Active</span>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h2>Student Profile</h2>
+                <ul>
+                    <li><strong>Name:</strong> Gowthaman</li>
+                    <li><strong>College:</strong> REC</li>
+                    <li><strong>Department:</strong> AI & DS</li>
+                    <li><strong>Year:</strong> 2 | <strong>Sec:</strong> A</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>Registration Guide</h2>
+                <ol>
+                    <li>Access the secure REC online portal.</li>
+                    <li>Initialize voter setup process.</li>
+                    <li>Verify department credentials (AI & DS).</li>
+                    <li>Upload encrypted ID matrix.</li>
+                    <li>Await quantum verification email.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Voting Ledgers</h2>
+            <input type="text" class="search-bar" placeholder="Search voter ID or Name...">
+            <table>
+                <tr>
+                    <th>Voter ID (Hash)</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>REC-0A4B</td>
+                    <td>Alice Smith</td>
+                    <td>AI & DS</td>
+                    <td><span class="status voted">Voted</span></td>
+                </tr>
+                <tr>
+                    <td>REC-9C2F</td>
+                    <td>Bob Johnson</td>
+                    <td>CSE</td>
+                    <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                    <td>REC-7D1E</td>
+                    <td>Charlie Brown</td>
+                    <td>AI & DS</td>
+                    <td><span class="status voted">Voted</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

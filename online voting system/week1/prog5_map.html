@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Campus Map</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+        body { font-family: 'Outfit', sans-serif; text-align: center; background: #e0e5ec; padding: 0; margin: 0; min-height: 100vh; display: flex; flex-direction: column;}
+        .header-box { background: #fff; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); z-index: 10; position: relative;}
+        h2 { margin: 0; color: #2c3e50; font-size: 28px;}
+        .instructions { background: linear-gradient(135deg, #00c6eb 0%, #00f2fe 100%); color: #fff; padding: 10px 25px; display: inline-block; border-radius: 30px; font-weight: bold; margin-top: 15px; box-shadow: 0 5px 15px rgba(0,242,254,0.3);}
+        
+        /* Map container must have overflow auto to prevent shrinking the fixed 800x533 map on small screens */
+        .map-container { flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 40px; overflow: auto; position: relative;}
+        
+        .map-wrapper { 
+            position: relative; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 5px solid #fff;
+            width: 800px; 
+            height: 533px;
+            flex-shrink: 0;
+            background: #1e1e2f;
+        }
+        
+        /* Fixed dimensions are MANDATORY so the image doesn't scale down, which breaks the HTML <map> coordinates */
+        img.map-img { width: 800px !important; height: 533px !important; display: block; max-width: none !important; object-fit: cover; opacity: 0.85;}
+        
+        /* CSS visual indicators for the invisible image map */
+        .ping { position: absolute; width: 40px; height: 40px; border-radius: 50%; animation: pulse 2s infinite; pointer-events: none;}
+        .ping::after { content: ''; position: absolute; top: 15px; left: 15px; width: 10px; height: 10px; border-radius: 50%;}
+        
+        .c-red { background: rgba(255, 50, 50, 0.4); border: 2px solid #ff3232; }
+        .c-red::after { background: #ff3232; }
+        .c-blue { background: rgba(50, 150, 255, 0.4); border: 2px solid #3296ff; }
+        .c-blue::after { background: #3296ff; }
+        .c-green { background: rgba(50, 255, 100, 0.4); border: 2px solid #32ff64; }
+        .c-green::after { background: #32ff64; }
+        .c-yellow { background: rgba(255, 200, 50, 0.4); border: 2px solid #ffc832; }
+        .c-yellow::after { background: #ffc832; }
+
+        /* Coords based strictly on 800x533 dimensions */
+        .ping-1 { top: 30%; left: 20%; transform: translate(-50%, -50%); } /* X:160, Y:160 */
+        .ping-2 { top: 25%; left: 70%; transform: translate(-50%, -50%); } /* X:560, Y:133 */
+        .ping-3 { top: 75%; left: 30%; transform: translate(-50%, -50%); } /* X:240, Y:400 */
+        .ping-4 { top: 65%; left: 65%; transform: translate(-50%, -50%); } /* X:520, Y:346 */
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-box">
+        <h2>REC Tactical Campus Layout</h2>
+        <div class="instructions">Select a pulsing sector to view booth diagnostics</div>
+    </div>
+    
+    <div class="map-container">
+        <div class="map-wrapper">
+            <!-- Pings for visual feedback on map hotspots -->
+            <div class="ping c-red ping-1" title="AI & DS Sector"></div>
+            <div class="ping c-blue ping-2" title="CSE Sector"></div>
+            <div class="ping c-green ping-3" title="ECE Sector"></div>
+            <div class="ping c-yellow ping-4" title="Admin Base"></div>
+            
+            <!-- Reliable city/map image from Pexels falling back to a dummy map -->
+            <img class="map-img" src="https://images.pexels.com/photos/1519088/pexels-photo-1519088.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 onerror="this.src='https://placehold.co/800x533/1e1e2f/00f2fe.png?text=City+Map+Radar'" 
+                 alt="REC Campus Aerial Map" usemap="#campusmap" width="800" height="533">
+        </div>
+    </div>
+
+    <!-- Map Coordinates for the 800x533 Grid -->
+    <map name="campusmap">
+        <!-- AI & DS Block -->
+        <area shape="circle" coords="160,160,60" href="prog5_booth_details.html?booth=aids" alt="AI & DS Block" target="detailsFrame">
+        <!-- CSE Block -->
+        <area shape="circle" coords="560,133,60" href="prog5_booth_details.html?booth=cse" alt="CSE Block" target="detailsFrame">
+        <!-- ECE Block -->
+        <area shape="circle" coords="240,400,60" href="prog5_booth_details.html?booth=ece" alt="ECE Block" target="detailsFrame">
+        <!-- Admin Base -->
+        <area shape="circle" coords="520,346,60" href="prog5_booth_details.html?booth=admin" alt="Admin Base" target="detailsFrame">
+    </map>
+</body>
+</html>

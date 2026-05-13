@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Programme 3: Evidence Display</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; margin: 0; display: flex; height: 100vh; background-color: #0d1117; color: #c9d1d9; }
+        .sidebar { width: 300px; background-color: #161b22; padding: 30px; border-right: 1px solid #30363d; display: flex; flex-direction: column;}
+        .content { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; background: radial-gradient(circle at center, #161b22 0%, #0d1117 100%);}
+        .logo { font-size: 24px; font-weight: 700; color: #58a6ff; margin-bottom: 40px; display: flex; align-items: center; gap: 10px;}
+        .sidebar-title { font-size: 12px; text-transform: uppercase; color: #8b949e; letter-spacing: 1px; margin-bottom: 15px;}
+        ul { list-style: none; padding: 0; margin: 0;}
+        li { margin-bottom: 15px; }
+        a { text-decoration: none; color: #c9d1d9; display: block; padding: 15px 20px; background: #21262d; border: 1px solid #30363d; border-radius: 8px; transition: 0.2s; font-weight: bold;}
+        a:hover { background: #30363d; color: #58a6ff; border-color: #8b949e; transform: scale(1.02);}
+        iframe { width: 100%; flex-grow: 1; border: 1px solid #30363d; border-radius: 12px; background: #0d1117; box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
+        .evidence-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;}
+        h2 { margin: 0; color: #c9d1d9;}
+        .badge { background: rgba(88, 166, 255, 0.1); color: #58a6ff; padding: 8px 15px; border-radius: 20px; border: 1px solid rgba(88,166,255,0.3); font-size: 14px;}
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">🗃️ Secure Vault</div>
+        <div class="sidebar-title">Attached Evidence</div>
+        <ul>
+            <li><a href="prog3_image.html" target="evidenceFrame">📄 View Sample Ballot</a></li>
+            <li><a href="prog3_image.html" target="evidenceFrame">🪪 View ID Proof</a></li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #30363d; font-size: 13px; color: #8b949e;">
+            <p><strong>Note:</strong> All documents are encrypted. Access granted for [AI & DS] node.</p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="evidence-header">
+            <h2>Evidence Viewport</h2>
+            <span class="badge">Connection Secure</span>
+        </div>
+        <iframe name="evidenceFrame" src="about:blank"></iframe>
+    </div>
+</body>
+</html>

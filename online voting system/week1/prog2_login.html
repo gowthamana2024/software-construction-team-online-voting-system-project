@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+        body { 
+            margin: 0; padding: 40px; 
+            background: #2a2a40; min-height: 100vh; box-sizing: border-box;
+            font-family: 'Outfit', sans-serif; display: flex; align-items: center; justify-content: center;
+        }
+        .login-box {
+            background: #1e1e2f; padding: 50px; border-radius: 20px; width: 400px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(0,242,254,0.2);
+            text-align: center;
+        }
+        .login-box h2 { color: #fff; font-size: 28px; margin-top: 0; margin-bottom: 30px; }
+        .input-group { position: relative; margin-bottom: 30px; text-align: left; }
+        input { 
+            width: 100%; padding: 15px; background: transparent; border: none; 
+            border-bottom: 2px solid #555; color: #fff; font-size: 16px; 
+            font-family: 'Outfit'; box-sizing: border-box; outline: none; transition: 0.3s;
+        }
+        input:focus { border-bottom-color: #00f2fe; }
+        label { position: absolute; top: 15px; left: 15px; color: #888; pointer-events: none; transition: 0.3s; }
+        input:focus ~ label, input:valid ~ label { top: -10px; left: 0; font-size: 12px; color: #00f2fe; }
+        button { 
+            width: 100%; padding: 15px; background: #00f2fe; color: #1e1e2f; 
+            border: none; border-radius: 30px; font-size: 16px; font-weight: 800; 
+            cursor: pointer; text-transform: uppercase; box-shadow: 0 10px 20px rgba(0,242,254,0.3); transition: 0.3s;
+        }
+        button:hover { background: #4facfe; transform: translateY(-3px); }
+        .icon { width: 60px; height: 60px; background: rgba(0,242,254,0.1); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: #00f2fe; font-size: 30px;}
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="icon">🔒</div>
+        <h2>Secure Login</h2>
+        <form>
+            <div class="input-group">
+                <input type="text" required>
+                <label>Node ID (Voter ID)</label>
+            </div>
+            <div class="input-group">
+                <input type="password" required>
+                <label>Cryptographic Passkey</label>
+            </div>
+            <button type="submit">Authenticate</button>
+        </form>
+    </div>
+</body>
+</html>

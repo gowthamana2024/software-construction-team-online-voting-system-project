@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+        body { 
+            margin: 0; padding: 40px; 
+            background: #2a2a40; min-height: 100vh; box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        h2 { color: #fff; font-size: 32px; border-bottom: 2px solid #00f2fe; padding-bottom: 10px; display: inline-block; margin-top:0;}
+        .card-container { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 30px;}
+        .candidate-card {
+            background: #1e1e2f; border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; 
+            width: 300px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: 0.3s;
+            position: relative;
+        }
+        .candidate-card:hover { transform: translateY(-10px); border-color: #00f2fe; box-shadow: 0 15px 40px rgba(0,242,254,0.2);}
+        .card-img { height: 180px; background: #333; background-size: cover; background-position: center; position: relative;}
+        .img-1 { background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500'); }
+        .img-2 { background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500'); }
+        .img-3 { background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500'); }
+        .dept-tag { position: absolute; top: 15px; right: 15px; background: rgba(0,242,254,0.9); color: #1e1e2f; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 12px;}
+        .card-body { padding: 25px; text-align: center; }
+        .card-body h3 { margin: 0 0 5px; color: #fff; font-size: 22px; }
+        .card-body p { margin: 0 0 20px; color: #888; font-size: 14px; }
+        .vote-btn {
+            background: transparent; color: #00f2fe; border: 2px solid #00f2fe; width: 100%;
+            padding: 12px; border-radius: 30px; font-size: 16px; font-weight: 800; text-transform: uppercase;
+            cursor: pointer; transition: 0.3s;
+        }
+        .vote-btn:hover { background: #00f2fe; color: #1e1e2f; }
+    </style>
+</head>
+<body>
+    <h2>Official Election Ballot</h2>
+    <div class="card-container">
+        <!-- Candidate 1 -->
+        <div class="candidate-card">
+            <div class="card-img img-1"><div class="dept-tag">AI & DS</div></div>
+            <div class="card-body">
+                <h3>John Doe</h3>
+                <p>Data Science Executive</p>
+                <button class="vote-btn">Cast Vote</button>
+            </div>
+        </div>
+        <!-- Candidate 2 -->
+        <div class="candidate-card">
+            <div class="card-img img-2"><div class="dept-tag">CSE</div></div>
+            <div class="card-body">
+                <h3>Jane Smith</h3>
+                <p>Software Engineering Lead</p>
+                <button class="vote-btn">Cast Vote</button>
+            </div>
+        </div>
+        <!-- Candidate 3 -->
+        <div class="candidate-card">
+            <div class="card-img img-3"><div class="dept-tag">ECE</div></div>
+            <div class="card-body">
+                <h3>Mark Lee</h3>
+                <p>Hardware Innovation</p>
+                <button class="vote-btn">Cast Vote</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

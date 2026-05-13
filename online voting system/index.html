@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REC Complete Online Voting System Portal</title>
+    <meta name="description" content="Next-generation transparent cryptographic online voting portal. Cast votes securely, view live real-time outcome statistics, and manage candidates dynamically via Admin configurations.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Unified Global Header -->
+    <header class="app-header">
+        <div class="logo-container">
+            <div class="logo-icon">V</div>
+            <!-- Single Page H1 adhering to SEO Best Practices -->
+            <h1 class="app-title">REC Voting Portal</h1>
+        </div>
+        
+        <div class="header-actions">
+            <!-- Dynamic Role Indicator Badge -->
+            <div id="role-status-badge" class="role-badge voter">
+                <span class="role-indicator-dot"></span>
+                <span id="role-text">Voter Mode</span>
+            </div>
+            <button id="btn-toggle-role" class="btn-switch-role">Switch to Admin</button>
+        </div>
+    </header>
+
+    <!-- Core Interactive Application Layout -->
+    <main class="main-layout">
+        
+        <!-- Navigation Menu Sidebar -->
+        <nav class="nav-sidebar" aria-label="Main application tabs">
+            <div class="nav-section-title">Elections Interface</div>
+            <button class="nav-item active" data-target="view-ballot" id="nav-ballot">
+                <span class="nav-icon">🗳️</span> Live Ballot
+            </button>
+            <button class="nav-item" data-target="view-results" id="nav-results">
+                <span class="nav-icon">📊</span> Live Results
+            </button>
+            
+            <div class="nav-section-title">Management</div>
+            <button class="nav-item" data-target="view-admin" id="nav-admin">
+                <span class="nav-icon">⚙️</span> Admin Profile
+            </button>
+
+            <div class="nav-section-title">Legacy Modules</div>
+            <a href="week1/prog2_index.html" target="_blank" class="nav-item" style="text-decoration: none;">
+                <span class="nav-icon">📁</span> W1: Full Portal
+            </a>
+            <a href="week2/program1_css_demo.html" target="_blank" class="nav-item" style="text-decoration: none;">
+                <span class="nav-icon">🎨</span> W2: CSS Demo
+            </a>
+            <a href="week2/program2_voter_record_animation.html" target="_blank" class="nav-item" style="text-decoration: none;">
+                <span class="nav-icon">✨</span> W2: Animation
+            </a>
+        </nav>
+
+        <!-- Dynamic Content Portals -->
+        <section class="content-area">
+            
+            <!-- VIEW 1: LIVE BALLOT -->
+            <div id="view-ballot" class="view-panel active">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">Official Active Ballot</h2>
+                        <p class="panel-subtitle">Select your preferred representation. Votes are verified cryptographically.</p>
+                    </div>
+                </div>
+
+                <!-- Voter Node Settings Bar -->
+                <div class="voter-identity-bar">
+                    <div class="identity-inputs">
+                        <label for="voter-id-input" style="color: var(--text-muted); font-size: 13px; font-weight: 600;">VOTER ID:</label>
+                        <input type="text" id="voter-id-input" class="custom-input" value="REC-VOTER-08X" placeholder="Enter Voter Hash">
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 12px; color: var(--text-muted);">Status:</span>
+                        <span id="voter-vote-status" style="background: rgba(0, 242, 254, 0.15); color: var(--accent-glow); padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid rgba(0,242,254,0.3);">Ready to Vote</span>
+                    </div>
+                </div>
+
+                <!-- Dynamic Grid populated by JavaScript from localStorage -->
+                <div id="candidates-grid" class="candidates-grid">
+                    <!-- Cards will be dynamically injected here -->
+                </div>
+            </div>
+
+            <!-- VIEW 2: REAL-TIME RESULTS -->
+            <div id="view-results" class="view-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">Real-Time Election Results</h2>
+                        <p class="panel-subtitle">Live computed vote distributions and statistical analysis.</p>
+                    </div>
+                </div>
+
+                <div class="results-container">
+                    <!-- Summary Stats Row -->
+                    <div class="results-stats-row">
+                        <div class="stat-card">
+                            <div id="stat-total-votes" class="stat-value">0</div>
+                            <div class="stat-label">Total Votes Cast</div>
+                        </div>
+                        <div class="stat-card">
+                            <div id="stat-total-candidates" class="stat-value">0</div>
+                            <div class="stat-label">Active Candidates</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" style="color: var(--accent-green);">100%</div>
+                            <div class="stat-label">Ledger Integrity</div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bars Visualizer populated by JS -->
+                    <div id="results-bars-wrapper" class="results-bars-wrapper">
+                        <!-- Result items dynamically rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: ADMIN CONFIGURATION CENTER -->
+            <div id="view-admin" class="view-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">Admin Configuration Profile</h2>
+                        <p class="panel-subtitle">Manage election roster, add candidate names, and trigger administrative overrides.</p>
+                    </div>
+                </div>
+
+                <div class="admin-grid">
+                    <!-- Left Column: Add Candidate Form -->
+                    <div class="admin-form-panel">
+                        <div class="section-heading">Add New Candidate</div>
+                        <form id="form-add-candidate">
+                            <div class="form-group">
+                                <label for="candidate-name" class="form-label">Candidate Full Name</label>
+                                <input type="text" id="candidate-name" class="custom-input" style="max-width: 100%;" placeholder="e.g. Dr. Ramesh Kumar" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="candidate-dept" class="form-label">Department / Representation</label>
+                                <select id="candidate-dept" class="form-select" required>
+                                    <option value="AI & DS">Artificial Intelligence & Data Science</option>
+                                    <option value="CSE">Computer Science & Engineering</option>
+                                    <option value="ECE">Electronics & Communication</option>
+                                    <option value="IT">Information Technology</option>
+                                    <option value="General Admin">General Administration</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Select Candidate Avatar Preset</label>
+                                <div class="avatar-selection-presets" id="avatar-presets">
+                                    <div class="preset-avatar-option selected" data-url="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500">
+                                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500" alt="Preset 1">
+                                    </div>
+                                    <div class="preset-avatar-option" data-url="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500">
+                                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500" alt="Preset 2">
+                                    </div>
+                                    <div class="preset-avatar-option" data-url="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500">
+                                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500" alt="Preset 3">
+                                    </div>
+                                    <div class="preset-avatar-option" data-url="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500">
+                                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500" alt="Preset 4">
+                                    </div>
+                                </div>
+                                <input type="hidden" id="selected-avatar-url" value="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="candidate-desc" class="form-label">Manifesto / Short Statement</label>
+                                <textarea id="candidate-desc" class="form-textarea" placeholder="Enter key goals or focus areas..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary">Register Candidate into Ballot</button>
+                        </form>
+                    </div>
+
+                    <!-- Right Column: Current Active Candidates Roster & Overrides -->
+                    <div class="admin-list-panel">
+                        <div class="section-heading">Active Candidate Ledger</div>
+                        <div id="admin-candidates-list" class="admin-candidates-list">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <!-- Special Admin Features: System Overrides -->
+                        <div class="danger-zone">
+                            <div style="color: #f44336; font-size: 14px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Special Admin Overrides</div>
+                            <div style="display: flex; gap: 15px;">
+                                <button id="btn-reset-votes" class="btn-danger">Clear All Vote Counts</button>
+                                <button id="btn-factory-reset" class="btn-danger" style="border-style: dashed;">Reset Full Database</button>
+                            </div>
+                            <p style="color: var(--text-muted); font-size: 12px; margin-top: 10px;">Clearing votes lets you launch a fresh poll instantly. Resetting restores default Week 1 candidate entries.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ADMIN AUTHORIZATION MODAL -->
+    <div id="modal-admin-auth" class="modal-overlay">
+        <div class="modal-box">
+            <button id="modal-close-btn" class="modal-close">&times;</button>
+            <h3 class="modal-title">Admin Authentication</h3>
+            <p class="modal-desc">Enter admin security passkey to access specialized candidate management controls.</p>
+            
+            <div class="form-group">
+                <label for="admin-passkey" class="form-label">Security Passkey</label>
+                <input type="password" id="admin-passkey" class="custom-input" style="max-width: 100%;" placeholder="Enter password (default: admin)">
+                <div id="auth-error" style="color: #f44336; font-size: 12px; margin-top: 8px; display: none;">Invalid passkey. Try 'admin'.</div>
+            </div>
+
+            <button id="btn-confirm-auth" class="btn-primary" style="margin-top: 20px;">Authorize Terminal</button>
+        </div>
+    </div>
+
+    <!-- OTP VERIFICATION MODAL -->
+    <div id="modal-otp-auth" class="modal-overlay">
+        <div class="modal-box" style="max-width: 480px; text-align: center;">
+            <button id="modal-otp-close-btn" class="modal-close">&times;</button>
+            <h3 class="modal-title">Cryptographic Identity Verification</h3>
+            <p class="modal-desc">To authorize casting a ballot for Voter Node <strong id="otp-target-voter-id" style="color: var(--accent-glow);"></strong>, please enter the dynamic verification code.</p>
+            
+            <!-- Simulated SMS/Email Notification Banner -->
+            <div class="simulated-otp-banner">
+                <div class="banner-header">
+                    <span style="font-size: 12px; font-weight: 700; color: var(--accent-blue);">🛡️ SECURE DISPATCH GATEWAY</span>
+                    <span class="pulse-status-dot"></span>
+                </div>
+                <div class="banner-content">
+                    Simulated Code Received: <span id="displayed-mock-otp" class="highlight-otp">----</span>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 5px;">Demo Mode: Autogenerated passcode delivered instantly.</div>
+            </div>
+
+            <!-- Auto-advancing 4-Digit Inputs -->
+            <div class="otp-inputs-container">
+                <input type="text" maxlength="1" class="otp-input-box" id="otp-char-1" autocomplete="off">
+                <input type="text" maxlength="1" class="otp-input-box" id="otp-char-2" autocomplete="off">
+                <input type="text" maxlength="1" class="otp-input-box" id="otp-char-3" autocomplete="off">
+                <input type="text" maxlength="1" class="otp-input-box" id="otp-char-4" autocomplete="off">
+            </div>
+            
+            <div id="otp-error-msg" style="color: #f44336; font-size: 13px; margin-top: 10px; display: none; font-weight: 600;">Incorrect code entered. Please verify and try again.</div>
+
+            <!-- Timer & Actions -->
+            <div class="otp-footer-actions">
+                <div class="timer-display">Expires in <span id="otp-countdown-text" style="color: var(--accent-glow); font-weight: 700;">01:59</span></div>
+                <button id="btn-resend-otp" class="btn-text-link">Resend Code</button>
+            </div>
+
+            <button id="btn-verify-otp" class="btn-primary" style="margin-top: 25px;">Verify Identity & Cast Vote</button>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast-msg" class="toast-notification">
+        <span style="font-size: 20px;">✓</span>
+        <span id="toast-text">Action completed successfully</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

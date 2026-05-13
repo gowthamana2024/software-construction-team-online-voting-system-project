@@ -1,0 +1,54 @@
+/* External CSS */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.external-style {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-left: 5px solid #4CAF50;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.external-heading {
+    color: #2E7D32;
+    margin-top: 0;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
